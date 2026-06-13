@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PoloNorte_WEB.Models.Prospecto>
+
+@{
+    ViewData["Title"] = "Lista de Prospectos";
+}
+
+<h1>Lista de Prospectos</h1>
+@if (Model.Count() != 0)
+{ 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cedula)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoCedula)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cedula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoCedula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+<p>
+    Esta lista esta vacia. <br>
+    Para comenzar, cree un nuevo cliente. <br>
+    Recuerde: Un prospecto tiene <a style="color: red"> al menos 2 AC y mas de 1.000.000 en compras recientes. </a>
+</p>
+}

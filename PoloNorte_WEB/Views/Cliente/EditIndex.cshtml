@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PoloNorte_WEB.Models.Cliente>
+
+@{
+    ViewData["Title"] = "EditIndex";
+}
+
+<h1>Editar cliente</h1>
+
+@using (Html.BeginForm("EditIndex", "Cliente", FormMethod.Get))
+{
+    <b>Buscar cliente por cedula:</b> @Html.TextBox("busqueda")
+    <input type="submit" name="submit" value="Buscar" placeholder="#-###-###### o 0#-####-####"/>
+    <br><p style="color: red;"> @Html.Label("", Convert.ToString((string)ViewBag.Error)) </p>
+}
+
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cedula)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descuento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComprasRecientes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComprasUltimoAño)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComprasAC)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                if (item != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cedula)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descuento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ComprasRecientes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ComprasUltimoAño)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ComprasAC)
+                        </td>
+                        <td>
+                            @Html.ActionLink("EDITAR", "Edit", item)
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
